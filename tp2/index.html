@@ -3,31 +3,69 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TP2</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>REBAI TAREK TP2</title>
+		
+		  <!-- MY CSS FILE-->
+    <link href="css/style.css" rel="stylesheet" media="all">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
-
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="js/main.js"></script>-->
     </head>
+
+
     <body>        
-        <h1>tp2</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
+	
+	<div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+
+            <div class="card card-3">
+
+                <div class="card-body">
+                    <h2 class="title">Personal Infos</h2>
+
+                    <form class="container" id="form">
+                        <div class="input-group">
+                            <input class="form-control" id="inputFirstName"   type="text" placeholder="First Name" name="name">
+                        </div>
+                        <div class="input-group">
+                            <input class="form-control" id="inputLastName" type="text" placeholder="Last Name" name="name" required>
+                        </div>
+                       
+                        
+                        
+                        <div class="input-group">
+                            <input class="form-control input" type="email" id="email" placeholder="Email" name="email" required>
+                        </div>
+                        <div class="input-group">
+                            <input class="form-control" type="text" id="phoneNumber" placeholder="Phone" name="phone" required>
+                        </div>
+                        <div class="p-t-10">
+                            <button class="btn btn--pill btn-color" type="submit" onclick="validate()">Submit</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+
+        <!-- Particles JS-->
+        <script src="vendor/particles/app.js"></script>
+        <script src="vendor/particles/particles.js"></script>
+        <script src="vendor/particles/particles.min.js"></script>
+
+
+
+
+
+
     </body>
+
+
+
 </html>
