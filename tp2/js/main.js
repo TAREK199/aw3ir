@@ -1,78 +1,95 @@
 
 
-const form = document.getElementById('form'); 
-const firstName = document.getElementById('inputFirstName');
-const lastName = document.getElementById('inputLastName');
-const date = document.getElementById('date');
-const email = document.getElementById('email');
-const phone = document.getElementById('phoneNumber'); 
+
+const form = document.querySelector('form');
+const succesMessage = document.querySelector('.success-message');
+const firstNameInput = document.querySelector('input[name= "firstname"]');
+const emailInput = document.querySelector('input[name = "email"]');
+const phoneInput = document.querySelector('input[name="phone"]');
+
+let isFormValid = false ;
+let isValidationOn = false ;
+
+const inputs = [firstNameInput,emailInput];
 
 
-form.addEventListener('submit',(e)=>{
+// reset inputs if i already taped in
+const resetInputElm = (elm)=>{
+    elm.classList.remove("firstname");
+    elm.nextElementSibling.classList.add("hidden");
+};
 
+//  if input invalid so remove error
+const invalidateInputElm =(elm) =>{
+    elm.classList.add("firstname"); // if invalid
+    elm.nextElementSibling.classList.remove("hidden");
+
+};
+
+// validation for the inputs 
+const validateInputs = () => {
+
+    if(!isValidationOn) return;
+
+    // resetInputElm(firstNameInput);
+    // resetInputElm(emailInput);
+
+    inputs.forEach(resetInputElm);
+
+    isFormValid = true ;
+
+    if(!firstNameInput.value){
+        invalidateInputElm(firstNameInput);
+        isFormValid = false ;
+    }
+
+    if(! isValidEmail(emailInput.value)){
+        invalidateInputElm(emailInput);
+        isFormValid = false ;
+    }
+
+    if(! isValidPhone(phoneInput.value)){
+        invalidateInputElm(phoneInput);
+        isFormValid = false;
+    }
+
+
+
+};
+
+
+form.addEventListener("submit" ,(e)=> {
+
+   // e.preventdefault(); // not refrech the page
     e.preventDefault();
-    validite();
+    isValidationOn = true ;
+    validateInputs();
+
+    if(isFormValid){
+        form.remove();
+      succesMessage.classList.remove("hidden");
+        alert('thnks bro');
+    }
 });
 
-function validate(){
+
+// to catch errors in every input
+inputs.forEach((input) =>{
+input.addEventListener("input",(e)=>{
+    e.preventDefault();
+    validateInputs();
+
+});
+
+});
 
 
-    // get values from input 
-
-    firstNameValue = firstName.value.trim();
-    lastNameValue = lastName.value.trim();
-    emailValue = email.value.trim();
-    phoneValue = phone.value.trim();
-
-    if(firstNameValue ===''){
-        firstName.setCustomValidity('Ener your name pls');
-    }if (firstNameValue.leng >= 20){
-        firstName.setCustomValidity('please Enter a Real Name');
-    }
-    else{
-        firstName.setCustomValidity('');
-    }
-
-    if(latNameValue ===''){
-        lastName.setCustomValidity('Ener your name pls');
-    }if (firstNameValue.leng >= 20){
-        lastName.setCustomValidity('please Enter a Real Name');
-    }
-    else{
-        lastName.setCustomValidity('');
-    }
-
-    if(phoneValue ===''){
-        phone.setCustomValidity('Ener your phonepls');
-    }if (firstNameValue.leng >= 10){
-        phone.setCustomValidity('please enter a valid phone');
-    }
-    else{
-        phone.setCustomValidity('');
-    }
-}
-
-
-// function setErrorFor(input) {
-// 	// const formControl = input.parentElement;
-// 	// //const small = formControl.querySelector('small');
-// 	// formControl.className = 'form-control error';
-// 	// //small.innerText = message;
-
-//     textbox.setCustomValidity('please enter your name ');
-// }
-
-// function setSuccessFor(input) {
-// 	// const formControl = input.parentElement;
-// 	// formControl.className = 'form-control success';
-//     textbox.setCustomValidity('Required email address');
-
-// }
-	
-function isEmail(email) {
-	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
-}
-
-
-
-
+const isValidEmail = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  };
+  
+  const isValidPhone = (phone) => {
+    const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    return re.test(String(phone).toLowerCase());
+  };

@@ -13,56 +13,36 @@
 
     <body>        
 	
-	<div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w780">
-
-            <div class="card card-3">
-
-                <div class="card-body">
-                    <h2 class="title">Personal Infos</h2>
-
-                    <form class="container" id="form">
-                        <div class="input-group">
-                            <input class="form-control" id="inputFirstName"   type="text" placeholder="First Name" name="name">
-                        </div>
-                        <div class="input-group">
-                            <input class="form-control" id="inputLastName" type="text" placeholder="Last Name" name="name" required>
-                        </div>
-                       
-                        
-                        
-                        <div class="input-group">
-                            <input class="form-control input" type="email" id="email" placeholder="Email" name="email" required>
-                        </div>
-                        <div class="input-group">
-                            <input class="form-control" type="text" id="phoneNumber" placeholder="Phone" name="phone" required>
-                        </div>
-                        <div class="p-t-10">
-                            <button class="btn btn--pill btn-color" type="submit" onclick="validate()">Submit</button>
-                        </div>
-
-                    </form>
-
-                </div>
-
-            </div>
-
+        <div class="contact">
+            <h1> CONTACT FORM TP 2 </h1>
         </div>
-    </div>
-
     
-    <!-- Main JS-->
-    <script src="js/main.js"></script>
-
-        <!-- Particles JS-->
-        <script src="vendor/particles/app.js"></script>
-        <script src="vendor/particles/particles.js"></script>
-        <script src="vendor/particles/particles.min.js"></script>
-
-
-
-
-
+        <form>
+            <div class="form-group">
+                <label>First Name</label>
+                <input class="" name="firstname" type="text" placeholder="REBAI">
+                <div class="error-hint hidden">Your Name is required.</div>
+            </div>
+    
+            <div class="form-group">
+                <label>Email</label>
+                <input class="" name="email" type="text" placeholder="REBAI">
+                <div class="error-hint hidden">Your Email is required.</div>
+            </div>
+    
+            <div class="form-group">
+                <label>Phone</label>
+                <input class="" name="phone" type="text" placeholder="REBAI">
+                <div class="error-hint hidden">Your Phone is required.</div>
+            </div>
+    
+          <button type="submit" > SEND INFOS !</button>
+    
+        </form>
+    
+        <div class="success-message hidden"> u have been succeffeuly registred !!<div>
+    
+        <script src="js/main.js"></script>
 
     </body>
 
