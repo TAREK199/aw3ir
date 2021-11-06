@@ -1,25 +1,32 @@
 
 
-/* ----------------- MY CSS ----------- */
+
+*{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
 
 
+body {
+	font-family: 'lato';
+	background: #000;
+}
 
-body{
-
-  background-color: rgb(255, 255, 255);
-  font-family: Lato;
-  
-  }
-  
-  
-  .contact{
-      background-image: linear-gradient(
-        to right,
-        rgb(0, 114, 66) 0%,
-        rgb(4, 109, 91) 100%
-      );
-      color: white;
-      padding: 40px;
+ #bg {
+    	position: absolute;
+      height: 100%;
+      width: 100%;
+    	top: 0;
+    	bottom: 0;
+    	left: 0;
+    	right: 0;	
+    }
+    
+   .contact{
+      color: black;
+      padding: 20px;
+      opacity: 0.8;
     }
   
     form{
@@ -44,9 +51,18 @@ body{
       font-size: 22px;
       margin-bottom: 10px;
     }
+
+    .card{
+
+        background-color: rgb(224, 224, 224);
+        padding: 0px;
+        margin: 350px;
+        opacity: 0.9;
+
+    }
   
   
-   input.firstname{
+   input.invalid{
       border: 1px solid red;
   }
   
@@ -62,7 +78,6 @@ body{
       border: 1px solid rgb(0, 114, 66);
       border-radius: 10px;
       transition: all 0.5s;
-      margin-top: 15px;
       cursor: pointer;
   }
   

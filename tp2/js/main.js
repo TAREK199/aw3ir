@@ -4,29 +4,29 @@
 const form = document.querySelector('form');
 const succesMessage = document.querySelector('.success-message');
 const firstNameInput = document.querySelector('input[name= "firstname"]');
+const lastNameInput = document.querySelector('input[name= "lastname"]');
 const emailInput = document.querySelector('input[name = "email"]');
 const phoneInput = document.querySelector('input[name="phone"]');
 
 let isFormValid = false ;
 let isValidationOn = false ;
 
-const inputs = [firstNameInput,emailInput];
+const inputs = [firstNameInput,lastNameInput,emailInput,phoneInput];
 
 
 // reset inputs if i already taped in
 const resetInputElm = (elm)=>{
-    elm.classList.remove("firstname");
+    elm.classList.remove("invalid");
     elm.nextElementSibling.classList.add("hidden");
 };
 
 //  if input invalid so remove error
 const invalidateInputElm =(elm) =>{
-    elm.classList.add("firstname"); // if invalid
+    elm.classList.add("invalid"); // if invalid
     elm.nextElementSibling.classList.remove("hidden");
-
 };
 
-// validation for the inputs 
+// for check the valiaton of the inputs
 const validateInputs = () => {
 
     if(!isValidationOn) return;
@@ -35,14 +35,20 @@ const validateInputs = () => {
     // resetInputElm(emailInput);
 
     inputs.forEach(resetInputElm);
-
     isFormValid = true ;
 
-    if(!firstNameInput.value){
+    if(!firstNameInput.value || firstNameInput.value.length >= 20){
         invalidateInputElm(firstNameInput);
         isFormValid = false ;
+
+        console.log(firstNameInput.value);
     }
 
+    if(!lastNameInput.value || lastNameInput.value.length >= 20){
+         invalidateInputElm(lastNameInput);
+         isFormValid = false ;
+    }
+   
     if(! isValidEmail(emailInput.value)){
         invalidateInputElm(emailInput);
         isFormValid = false ;
@@ -71,16 +77,13 @@ form.addEventListener("submit" ,(e)=> {
         alert('thnks bro');
     }
 });
-
-
+ 
 // to catch errors in every input
 inputs.forEach((input) =>{
 input.addEventListener("input",(e)=>{
     e.preventDefault();
     validateInputs();
-
 });
-
 });
 
 
